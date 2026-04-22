@@ -1,0 +1,96 @@
+/* src/styles/global.css
+   ─────────────────────────────────────────────────────────
+   All VS Code colour tokens as CSS variables.
+   Every component reads from these — change one variable
+   here and the entire theme updates.
+   ───────────────────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --bg:          #1e1e1e;   /* main editor bg */
+  --bg-dark:     #141414;   /* darkest — title bar, terminal */
+  --bg-side:     #252526;   /* sidebar */
+  --bg-tab:      #2d2d2d;   /* inactive tabs */
+  --bg-hover:    #2a2d2e;   /* hover highlight */
+
+  /* Borders */
+  --border:      #3c3c3c;
+
+  /* Text */
+  --text:        #d4d4d4;   /* primary */
+  --text-mute:   #858585;   /* line nums, inactive */
+  --white:       #ffffff;
+
+  /* Syntax colours — VS Code Dark+ palette */
+  --blue:        #569cd6;   /* keywords */
+  --cyan:        #4ec9b0;   /* classes / types */
+  --green:       #6a9955;   /* comments, strings */
+  --yellow:      #dcdcaa;   /* functions */
+  --orange:      #ce9178;   /* strings */
+  --purple:      #c586c0;   /* decorators */
+  --red:         #f44747;   /* errors */
+
+  /* UI accent */
+  --accent:      #007acc;   /* status bar, active tab border */
+  --accent-glow: rgba(0,122,204,0.15);
+
+  /* Tag colours */
+  --tag-blue-bg:    #0d3a5c;
+  --tag-blue-fg:    #4fc1ff;
+  --tag-blue-bdr:   #1a6a9a;
+  --tag-green-bg:   #0d3a1a;
+  --tag-green-fg:   #4ec9b0;
+  --tag-green-bdr:  #1a6a4a;
+  --tag-purple-bg:  #2d1a3a;
+  --tag-purple-fg:  #c586c0;
+  --tag-purple-bdr: #5a3a7a;
+  --tag-orange-bg:  #3a1e0d;
+  --tag-orange-fg:  #ce9178;
+  --tag-orange-bdr: #7a4a1a;
+
+  --font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;          /* VS Code never scrolls the shell */
+  background: var(--bg-dark);
+}
+
+body {
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbars — thin & dark like VS Code */
+::-webkit-scrollbar        { width: 8px; height: 8px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: #424242; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+a      { color: inherit; text-decoration: none; }
+
+/* Blinking cursor animation — used in terminal */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Fade-in used by tab content swap */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Clickable code reference tokens */
+span[title*="Click"]:hover {
+  color: #4fc1ff !important;
+  text-decoration-color: #4fc1ff !important;
+}
